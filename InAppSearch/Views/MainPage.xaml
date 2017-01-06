@@ -1,0 +1,61 @@
+﻿<Page
+    x:Class="InAppSearch.Views.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:InAppSearch.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    DataContext="{x:Bind MainPageVM}">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Pivot>
+            <PivotItem>
+                <PivotItem.Header>
+                    <TextBlock Text="Indexed folder sample" Style="{ThemeResource SubheaderTextBlockStyle}"/>
+                </PivotItem.Header>
+                <RelativePanel>
+                    <Button x:Name="IndexerFolderInitializeBtn" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignTopWithPanel="True" Content="Create indexed folder" Command="{x:Bind MainPageVM.CreateIndexedFolderCmd}" Margin="0,4"/>
+                    <AutoSuggestBox x:Name="SearchBx" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" RelativePanel.Below="IndexerFolderInitializeBtn" Text="{x:Bind MainPageVM.QueryText, Mode=TwoWay}" TextChanged="{x:Bind MainPageVM.TextChangedHandler}" PlaceholderText="Settings" ToolTipService.ToolTip="{Binding PlaceholderText, RelativeSource={RelativeSource Mode=Self}}"/>
+                    <Grid RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" RelativePanel.Below="SearchBx">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <ListView Grid.Column="0" ItemsSource="{x:Bind MainPageVM.SettingsCollection}">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding }"/>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                        <TextBlock Grid.Column="1" TextWrapping="Wrap" Text="{x:Bind MainPageVM.OutputStr, Mode=OneWay}"/>
+                    </Grid>
+                </RelativePanel>
+            </PivotItem>
+            <PivotItem>
+                <PivotItem.Header>
+                    <TextBlock Text="ContextIndexer sample" Style="{ThemeResource SubheaderTextBlockStyle}"/>
+                </PivotItem.Header>
+                <RelativePanel>
+                    <Button x:Name="ContentIndexerInitializeBtn" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignTopWithPanel="True" Content="Push item into contentindxer" Command="{x:Bind MainPageVM.CreateContentIndexerCmd}" Margin="0,4"/>
+                    <AutoSuggestBox x:Name="CISearch" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" RelativePanel.Below="ContentIndexerInitializeBtn" Text="{x:Bind MainPageVM.QueryText, Mode=TwoWay}" TextChanged="{x:Bind MainPageVM.TextChangedHandler}" PlaceholderText="Settings" ToolTipService.ToolTip="{Binding PlaceholderText, RelativeSource={RelativeSource Mode=Self}}"/>
+                    <Grid RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" RelativePanel.Below="CISearch">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <ListView Grid.Column="0" ItemsSource="{x:Bind MainPageVM.SettingsCollection}">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding }"/>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                        <TextBlock Grid.Column="1" TextWrapping="Wrap" Text="{x:Bind MainPageVM.OutputStr, Mode=OneWay}"/>
+                    </Grid>
+                </RelativePanel>
+            </PivotItem>
+        </Pivot>
+    </Grid>
+</Page>

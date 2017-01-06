@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<AppSearchUWP>
+  <Properties xmlns="http://schemas.microsoft.com/Search/2013/ApplicationContent">
+    <Name>Color Setting</Name>
+    <Keywords>
+      <Keyword xml:lang="en-us">color</Keyword>
+      <Keyword xml:lang="en-gb">colour</Keyword>
+      <Keyword xml:lang="zh-tw">顏色</Keyword>
+    </Keywords>
+    <Comment>Choose the color of your app</Comment>
+
+    <AdditionalProperties>
+      <Property Key="System.Title">Title for color setting</Property>
+    </AdditionalProperties>
+  </Properties>
+  <FullContentSearch_ZhTW xmlns:sc="http://schemas.microsoft.com/Search/2013/ApplicationContent" sc:IndexableContent="true">
+    測試Abc
+  </FullContentSearch_ZhTW>
+</AppSearchUWP>
